@@ -31,7 +31,7 @@ fun SchedulingScreen(modifier: Modifier = Modifier) {
             ),
             navigationIcon = {
                 IconButton(onClick = {
-                   na
+                   
                 }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
