@@ -31,7 +31,7 @@ fun SchedulingScreen(modifier: Modifier = Modifier) {
             ),
             navigationIcon = {
                 IconButton(onClick = {
-                    //navigate back to Workout Screen
+                   na
                 }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -53,3 +53,8 @@ fun SchedulingScreen(modifier: Modifier = Modifier) {
 fun SchedulingScreenPreview(){
     SchedulingScreen()
 }
+
+//Self Notes
+//https://github.com/kizitonwose/Calendar/blob/main/sample/src/main/java/com/kizitonwose/calendar/sample/HomeActivity.kt
+//https://github.com/boguszpawlowski/ComposeCalendar
+//https://developer.android.com/develop/ui/compose/components/datepickers
