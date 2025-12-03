@@ -1,9 +1,12 @@
 package com.example.regiment.ui.theme.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.DatePicker
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -12,26 +15,30 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.regiment.R
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SchedulingScreen(modifier: Modifier = Modifier) {
+fun SchedulingScreen() {
+    val state = rememberDatePickerState()
     Scaffold(
+        modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.schedule_title)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer
-            ),
+                ),
             navigationIcon = {
                 IconButton(onClick = {
-                   
+
                 }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -39,11 +46,24 @@ fun SchedulingScreen(modifier: Modifier = Modifier) {
                     )
                 }
             }
-        )
-    },
-        modifier = modifier.fillMaxSize())
-    {
+            )
+        }
+    )
+    { padding ->
 
+
+        Column (modifier = Modifier.padding(padding)){
+            DatePicker(
+                state = state,
+                showModeToggle = true,
+                title = {
+                    Text("Select Workout Date",
+                    modifier = Modifier.padding(16.dp))
+                }
+            )
+            TODO("Section for selecting the type of workout scheduled")
+            TODO("Moving it all to a vm ;-; ")
+        }
 
     }
 }
@@ -54,7 +74,3 @@ fun SchedulingScreenPreview(){
     SchedulingScreen()
 }
 
-//Self Notes
-//https://github.com/kizitonwose/Calendar/blob/main/sample/src/main/java/com/kizitonwose/calendar/sample/HomeActivity.kt
-//https://github.com/boguszpawlowski/ComposeCalendar
-//https://developer.android.com/develop/ui/compose/components/datepickers
