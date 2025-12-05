@@ -11,15 +11,18 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.regiment.R
 import com.example.regiment.data.WorkoutCategory
 import com.example.regiment.viewmodel.WorkoutViewModel
+import com.example.regiment.ui.theme.nav.SchedulingScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorkoutScreen(
     viewModel: WorkoutViewModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController
 ) {
     val workouts = viewModel.workouts   // backed by mutableStateList in ViewModel
 
@@ -75,7 +78,7 @@ fun WorkoutScreen(
                 ),
                 navigationIcon = {
                     IconButton(onClick = {
-                        // future dialog popup for scheduled workout
+                       navController.navigate(SchedulingScreen)
                     }) {
                         Icon(
                             imageVector = Icons.Default.Add,

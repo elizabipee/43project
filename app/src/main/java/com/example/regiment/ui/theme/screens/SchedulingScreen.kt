@@ -21,12 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.regiment.R
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SchedulingScreen() {
+fun SchedulingScreen(navController: NavHostController) {
     val state = rememberDatePickerState()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -38,7 +39,7 @@ fun SchedulingScreen() {
                 ),
             navigationIcon = {
                 IconButton(onClick = {
-
+                    navController.popBackStack()
                 }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -61,8 +62,8 @@ fun SchedulingScreen() {
                     modifier = Modifier.padding(16.dp))
                 }
             )
-            TODO("Section for selecting the type of workout scheduled")
-            TODO("Moving it all to a vm ;-; ")
+//            TODO("Section for selecting the type of workout scheduled")
+//            TODO("Moving it all to a vm ;-; ")
         }
 
     }
@@ -71,6 +72,6 @@ fun SchedulingScreen() {
 @Preview
 @Composable
 fun SchedulingScreenPreview(){
-    SchedulingScreen()
+//    SchedulingScreen()
 }
 

@@ -16,6 +16,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.regiment.ui.theme.screens.WorkoutScreen
 import com.example.regiment.viewmodel.WorkoutViewModel
 import com.example.regiment.data.WorkoutCategory
+import com.example.regiment.ui.theme.nav.navGraph
 
 
 class MainActivity : ComponentActivity() {
@@ -26,12 +27,8 @@ class MainActivity : ComponentActivity() {
             RegimentTheme {
                 val workoutViewModel: WorkoutViewModel = viewModel()
 
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    WorkoutScreen(
-                        viewModel = workoutViewModel,
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                   navGraph(viewModel= workoutViewModel)
+
             }
         }
     }
@@ -43,7 +40,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainActivityPreview() {
     RegimentTheme {
-        WorkoutScreen(viewModel = WorkoutViewModel())
+//        WorkoutScreen(viewModel = WorkoutViewModel())
 
     }
 }
