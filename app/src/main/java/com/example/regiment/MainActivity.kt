@@ -26,9 +26,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             RegimentTheme {
                 val workoutViewModel: WorkoutViewModel = viewModel()
-
                    navGraph(viewModel= workoutViewModel)
-
             }
         }
     }
