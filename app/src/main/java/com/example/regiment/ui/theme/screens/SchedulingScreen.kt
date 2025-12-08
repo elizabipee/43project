@@ -1,6 +1,9 @@
 package com.example.regiment.ui.theme.screens
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.icu.util.Calendar
+import android.provider.CalendarContract
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.CalendarLocale
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerColors
 import androidx.compose.material3.DatePickerDefaults
@@ -45,6 +49,10 @@ fun SchedulingScreen(navController: NavHostController) {
     val state = rememberDatePickerState()
     val openDialog = remember {mutableStateOf(false)}
 
+    val intent = Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI).apply {
+//        val beginTime : CalendarLocale = Calendar.getInstance().apply { set() }
+    }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -71,7 +79,7 @@ fun SchedulingScreen(navController: NavHostController) {
 
         Column (modifier = Modifier.padding(padding), horizontalAlignment = Alignment.CenterHorizontally){
 
-            DatePicker(
+            DatePicker(                 //This is the date picker UI
                 state = state,
                 showModeToggle = true,
                 title = {
@@ -79,8 +87,9 @@ fun SchedulingScreen(navController: NavHostController) {
                     modifier = Modifier.padding(20.dp))
                 }
             )
+            Spacer(modifier = Modifier.height(24.dp))
             Button(onClick = {
-                openDialog.value = true })
+                openDialog.value = true })  //This opens the confirmation dialog and sends the user to their calendar
             { Text("Assign Workout") }
 
             if(openDialog.value){
@@ -89,7 +98,7 @@ fun SchedulingScreen(navController: NavHostController) {
                         openDialog.value = false
                     }
                 ){
-                    Surface {
+                    Surface {           //holds the dialog box
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(
                                 text =
@@ -107,14 +116,13 @@ fun SchedulingScreen(navController: NavHostController) {
                     }
                 }
             }
-//
-        //
-        //            TODO("Section for selecting the type of workout scheduled")
-//            TODO("Moving it all to a vm ;-; ")
+                    TODO("Section for selecting the type of workout scheduled")
         }
 
     }
 }
+
+
 
 @Preview
 @Composable
